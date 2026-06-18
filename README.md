@@ -15,10 +15,11 @@ Latent Collaboration in Multi-Agent Systems
 
 <p align="center">
     <a href="https://arxiv.org/abs/2511.20639"><img src="https://img.shields.io/badge/arXiv-2511.20639-B31B1B.svg?logo=arxiv" alt="Arxiv"></a>
+    <a href="https://github.com/Gen-Verse/LatentMAS/blob/main/assets/LatentMAS_slides.pdf"><img src="https://img.shields.io/badge/Slides-LatentMAS-FF6F00.svg?logo=googleslides" alt="Paper Slides"></a>
     <a href="https://huggingface.co/papers/2511.20639"><img src="https://img.shields.io/badge/Huggingface-DailyPaper-FFD21E.svg?logo=huggingface" alt="Huggingface Paper"></a>
     <a href="https://x.com/Jiaru_Zou/status/1994724438135169196"><img src="https://img.shields.io/badge/Coverage-LatentMAS-2176BC.svg?logo=x" alt="X"></a>
     <a href="https://github.com/Gen-Verse/LatentMAS/tree/Science-LatentMAS"><img src="https://img.shields.io/badge/Science--LatentMAS-Branch-2D8CFF.svg?logo=github" alt="Science-LatentMAS Branch"></a>
-  </p>
+</p>
 
 ---
 
