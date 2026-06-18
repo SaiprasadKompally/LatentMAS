@@ -77,12 +77,13 @@ class ModelWrapper:
             # )
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_name,
-                torch_dtype=torch.bfloat16,
+                # torch_dtype=torch.bfloat16, this is for big gpu
+                dtype=torch.float16,
                 device_map="auto"
             )
         if len(self.tokenizer) != self.model.get_input_embeddings().weight.shape[0]:
             self.model.resize_token_embeddings(len(self.tokenizer))
-        self.model.to(device)
+        # self.model.to(device)
         self.model.eval()
         if hasattr(self.model.config, "use_cache"):
             self.model.config.use_cache = True
@@ -186,6 +187,9 @@ class ModelWrapper:
         else:
             # keep the matrix, for further normalization
             realign_matrix = torch.eye(realign_matrix.shape[0], device=realign_matrix.device, dtype=realign_matrix.dtype)
+        
+        print("W_in shape:", input_weight.shape)
+        print("W_out shape:", output_weight.shape)
 
         return realign_matrix, target_norm
 
