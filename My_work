@@ -15,3 +15,4 @@ Pythonassert "qwen" in args.model_name.lower(), "this prompt only for qwen model
 🔧 Replace it with:
 Pythonassert any(x in args.model_name.lower() for x in ["qwen", "gemma"]), \    "this prompt only supports qwen or gemma models"Show more lines
 
+the above line is added i multiple places
