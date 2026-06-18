@@ -1,0 +1,17 @@
+
+add model name in run.py
+------------
+"""*****Modified your models.py
+Find this:
+Pythonself.model = AutoModelForCausalLM.from_pretrained(    model_name,    torch_dtype=(torch.bfloat16 if torch.cuda.is_available() else torch.float32),)Show more lines
+
+✅ Replace with THIS:
+Pythonself.model = AutoModelForCausalLM.from_pretrained(    model_name,    torch_dtype=torch.bfloat16,    device_map="auto")Show more lines
+--------------------
+"""***** in prompt.py
+Find this line (around the error line 699):
+Pythonassert "qwen" in args.model_name.lower(), "this prompt only for qwen models"Show more lines
+
+🔧 Replace it with:
+Pythonassert any(x in args.model_name.lower() for x in ["qwen", "gemma"]), \    "this prompt only supports qwen or gemma models"Show more lines
+
