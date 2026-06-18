@@ -20,9 +20,27 @@ def _ensure_pad_token(tokenizer: AutoTokenizer) -> None:
             tokenizer.add_special_tokens({"pad_token": "<pad>"})
 
 
+# def _past_length(past_key_values: Optional[Tuple]) -> int:
+#     if not past_key_values:
+#         return 0
+#     k = past_key_values[0][0]
+#     return k.shape[-2]
 def _past_length(past_key_values: Optional[Tuple]) -> int:
+    if past_key_values is None:
+        return 0
+
+    # New HuggingFace cache API: DynamicCache / Cache
+    if hasattr(past_key_values, "get_seq_length"):
+        return past_key_values.get_seq_length()
+
+    # Convert new cache object to old tuple format if possible
+    if hasattr(past_key_values, "to_legacy_cache"):
+        past_key_values = past_key_values.to_legacy_cache()
+
     if not past_key_values:
         return 0
+
+    # Old tuple-style past_key_values
     k = past_key_values[0][0]
     return k.shape[-2]
 
